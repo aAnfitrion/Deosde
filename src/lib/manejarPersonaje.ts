@@ -15,9 +15,7 @@ export function personajeMovimiento(a: mapaD, b: string) {
   const posicion = personajeEncontrar(a);
   const posicionMover = (aa: number) => {
     a[posicion].entidad = undefined;
-    a[posicion].icono = undefined;
     a[posicion + aa].entidad = PERSONAJE.nombre;
-    a[posicion + aa].icono = PERSONAJE.icono;
   };
 
   if (b == "derecha") {

@@ -3,7 +3,8 @@ import Estandar from "@lyt/Estandar.astro";
 import Mapa from "@cmp/Mapa.svelte";
 ---
 
-
 <Estandar titulo="Deosde">
-  <Mapa client:only="svelte" />
+  <div class="flex justify-center items-center min-h-screen">
+    <Mapa client:only="svelte" />
+  </div>
 </Estandar>

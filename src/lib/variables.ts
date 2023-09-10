@@ -1,1 +1,1 @@
-export const PERSONAJE = { nombre: "Devorador", icono: "bg-red-500" };
+export const PERSONAJE = { nombre: "Devorador" };

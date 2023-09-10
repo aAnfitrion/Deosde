@@ -8,47 +8,60 @@
 
   let mapa = generarMapa();
   mapa[1].entidad = PERSONAJE.nombre;
-  mapa[1].icono = PERSONAJE.icono;
+  let permitirMovimiento = true;
 
   function teclaPresionada(e: any) {
+    if (!permitirMovimiento) {
+      return;
+    }
     const mover = (a: string, b: number, c: number) => {
       i = { translateX: b, translateY: c };
+      permitirMovimiento = false;
       setTimeout(() => {
         personajeMovimiento(mapa, a);
         i = { translateX: 0, translateY: 0 };
-      }, 100);
+        permitirMovimiento = true;
+      }, 200);
     };
     switch (e.keyCode) {
       case 39:
-        mover("derecha", 36, 0);
+        mover("derecha", 32, 0);
         break;
       case 37:
-        mover("izquierda", -36, 0);
+        mover("izquierda", -32, 0);
         break;
       case 40:
-        mover("abajo", 0, 36);
+        mover("abajo", 0, 32);
         break;
       case 38:
-        mover("arriba", 0, -36);
+        mover("arriba", 0, -32);
         break;
     }
     mapa = mapa;
   }
 </script>
 
-<div class="flex justify-center mt-8">
-  <div class="grid grid-cols-12 gap-1">
+<div class="flex justify-center">
+  <div class="grid grid-cols-12">
     {#each mapa as baldosa}
       {#if baldosa.id != 0}
         {#if baldosa.entidad == PERSONAJE.nombre}
-          <Motion animate={i} transition={{ duration: 0.1 }} let:motion>
-            <div
-              class={`col-span-1 h-8 w-8 border border-neutral-500 ${baldosa.icono} `}
-              use:motion
-            />
-          </Motion>
+          <div
+            class="col-span-1 h-8 w-8 bg-[url('/sprites/Pasto.png')] bg-cover"
+          >
+            <Motion animate={i} transition={{ duration: 0.2 }} let:motion>
+              <img
+                class="w-full h-full"
+                src={`/sprites/${baldosa.entidad}.png`}
+                alt="epic"
+                use:motion
+              />
+            </Motion>
+          </div>
         {:else}
-          <div class={`col-span-1 h-8 w-8 `} />
+          <div
+            class="col-span-1 h-8 w-8 bg-[url('/sprites/Pasto.png')] bg-cover"
+          />
         {/if}
       {/if}
     {/each}
