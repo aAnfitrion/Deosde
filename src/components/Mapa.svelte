@@ -41,30 +41,26 @@
   }
 </script>
 
-<div class="flex justify-center">
-  <div class="grid grid-cols-12">
-    {#each mapa as baldosa}
-      {#if baldosa.id != 0}
-        {#if baldosa.entidad == PERSONAJE.nombre}
-          <div
-            class="col-span-1 h-8 w-8 bg-[url('/sprites/Pasto.png')] bg-cover"
-          >
-            <Motion animate={i} transition={{ duration: 0.2 }} let:motion>
-              <img
-                class="w-full h-full"
-                src={`/sprites/${baldosa.entidad}.png`}
-                alt="epic"
-                use:motion
-              />
-            </Motion>
-          </div>
-        {:else}
-          <div
-            class="col-span-1 h-8 w-8 bg-[url('/sprites/Pasto.png')] bg-cover"
-          />
-        {/if}
+<div class="grid grid-cols-12">
+  {#each mapa as baldosa}
+    {#if baldosa.id != 0}
+      {#if baldosa.entidad == PERSONAJE.nombre}
+        <div class="col-span-1 h-8 w-8 bg-[url('/sprites/Pasto.png')] bg-cover">
+          <Motion animate={i} transition={{ duration: 0.2 }} let:motion>
+            <img
+              class="w-full h-full"
+              src={`/sprites/${baldosa.entidad}.png`}
+              alt="epic"
+              use:motion
+            />
+          </Motion>
+        </div>
+      {:else}
+        <div
+          class="col-span-1 h-8 w-8 bg-[url('/sprites/Pasto.png')] bg-cover"
+        />
       {/if}
-    {/each}
-  </div>
+    {/if}
+  {/each}
 </div>
-<svelte:window on:keydown|preventDefault={teclaPresionada} />
+<svelte:window on:keydown={teclaPresionada} />

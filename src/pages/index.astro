@@ -1,10 +1,20 @@
 ---
 import Estandar from "@lyt/Estandar.astro";
-import Mapa from "@cmp/Mapa.svelte";
+import InterfazMapa from "@cmp/InterfazMapa.svelte";
+import InterfazEstado from "@cmp/InterfazEstado.svelte";
+import InterfazPuntajes from "@cmp/InterfazPuntajes.svelte";
 ---
 
 <Estandar titulo="Deosde">
-  <div class="flex justify-center items-center min-h-screen">
-    <Mapa client:only="svelte" />
+  <div class="bg-[url('/fondo.jpg')] bg-cover">
+    <div
+      class="flex justify-center items-center min-h-screen backdrop-blur bg-amber-300/30"
+    >
+      <div class="grid grid-cols-3 gap-3">
+        <InterfazPuntajes />
+        <InterfazMapa client:only="svelte" />
+        <InterfazEstado />
+      </div>
+    </div>
   </div>
 </Estandar>
