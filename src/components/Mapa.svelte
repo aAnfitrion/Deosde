@@ -1,13 +1,15 @@
 <script lang="ts">
   import { generarMapa } from "@lib/generarMapa";
-  import { PERSONAJE } from "@lib/variables";
+  import { PERSONAJE, OBJETIVO } from "@lib/variables";
   import { personajeMovimiento } from "@lib/manejarPersonaje";
+  import { manejarObjetivo } from "@lib/manejarObjetivo";
 
   import { Motion } from "svelte-motion";
   let i = { translateX: 0, translateY: 0 };
 
   let mapa = generarMapa();
   mapa[1].entidad = PERSONAJE;
+  mapa[5].entidad = OBJETIVO;
   let permitirMovimiento = true;
 
   function teclaPresionada(e: any) {
@@ -37,7 +39,10 @@
         mover("arriba", 0, -32);
         break;
     }
-    mapa = mapa;
+    setTimeout(() => {
+      manejarObjetivo(mapa);
+      mapa = mapa;
+    }, 200);
   }
 </script>
 
@@ -54,6 +59,14 @@
               use:motion
             />
           </Motion>
+        </div>
+      {:else if baldosa.entidad != PERSONAJE && baldosa.entidad}
+        <div class="col-span-1 h-8 w-8 bg-[url('/sprites/Pasto.png')] bg-cover">
+          <img
+            class="w-full h-full"
+            src={`/sprites/${baldosa.entidad}.png`}
+            alt="epic"
+          />
         </div>
       {:else}
         <div
