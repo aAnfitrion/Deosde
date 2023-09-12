@@ -2,7 +2,8 @@
   import { generarMapa } from "@lib/generarMapa";
   import { PERSONAJE, OBJETIVO } from "@lib/variables";
   import { personajeMovimiento } from "@lib/manejarPersonaje";
-  import { manejarObjetivo } from "@lib/manejarObjetivo";
+  import { manejarObjetivo, verificarObjetivo } from "@lib/manejarObjetivo";
+  import { puntuacion } from "@lib/manejarPuntuacion";
 
   import { Motion } from "svelte-motion";
   let i = { translateX: 0, translateY: 0 };
@@ -40,7 +41,12 @@
         break;
     }
     setTimeout(() => {
+      if (!verificarObjetivo(mapa)) {
+        const nuevaPuntuacion = parseInt($puntuacion[0]) + 1;
+        $puntuacion = [nuevaPuntuacion.toString()];
+      }
       manejarObjetivo(mapa);
+
       mapa = mapa;
     }, 200);
   }
