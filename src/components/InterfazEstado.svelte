@@ -1,5 +1,10 @@
 <script lang="ts">
-  import { puntuacion } from "@lib/manejarPuntuacion";
+  import { puntuacion, puntuacionMaxima } from "@lib/manejarPuntuacion";
+  setInterval(() => {
+    if (parseInt($puntuacion[0]) > parseInt($puntuacionMaxima[0])) {
+      $puntuacionMaxima = $puntuacion;
+    }
+  }, 200);
 </script>
 
 <div class="flex flex-col justify-center gap-4">
@@ -16,7 +21,7 @@
   >
     <div>
       <h1 class="text-2xl text-sky-100 font-black">Puntuación máxima</h1>
-      <p class="text-xl text-sky-200 font-black">2345480</p>
+      <p class="text-xl text-sky-200 font-black">{$puntuacionMaxima}</p>
     </div>
   </div>
 </div>
