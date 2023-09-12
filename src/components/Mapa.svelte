@@ -7,7 +7,7 @@
   let i = { translateX: 0, translateY: 0 };
 
   let mapa = generarMapa();
-  mapa[1].entidad = PERSONAJE.nombre;
+  mapa[1].entidad = PERSONAJE;
   let permitirMovimiento = true;
 
   function teclaPresionada(e: any) {
@@ -44,7 +44,7 @@
 <div class="grid grid-cols-12">
   {#each mapa as baldosa}
     {#if baldosa.id != 0}
-      {#if baldosa.entidad == PERSONAJE.nombre}
+      {#if baldosa.entidad == PERSONAJE}
         <div class="col-span-1 h-8 w-8 bg-[url('/sprites/Pasto.png')] bg-cover">
           <Motion animate={i} transition={{ duration: 0.2 }} let:motion>
             <img

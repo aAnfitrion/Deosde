@@ -1,1 +1,1 @@
-export const PERSONAJE = { nombre: "Devorador" };
+export const PERSONAJE = "Devorador";

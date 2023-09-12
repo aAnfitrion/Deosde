@@ -4,7 +4,7 @@ import { PERSONAJE } from "@lib/variables.ts";
 const personajeEncontrar = (a: mapaD) => {
   let personajeEncontrado: number;
   a.find((baldosa) => {
-    if (baldosa.entidad == PERSONAJE.nombre) {
+    if (baldosa.entidad == PERSONAJE) {
       personajeEncontrado = baldosa.id;
     }
   });
@@ -15,7 +15,7 @@ export function personajeMovimiento(a: mapaD, b: string) {
   const posicion = personajeEncontrar(a);
   const posicionMover = (aa: number) => {
     a[posicion].entidad = undefined;
-    a[posicion + aa].entidad = PERSONAJE.nombre;
+    a[posicion + aa].entidad = PERSONAJE;
   };
 
   if (b == "derecha") {
