@@ -11,7 +11,7 @@ import InterfazPuntajes from "@cmp/InterfazPuntajes.svelte";
       class="flex justify-center items-center min-h-screen backdrop-blur bg-amber-300/30"
     >
       <div class="grid grid-cols-3 gap-3">
-        <InterfazPuntajes />
+        <InterfazPuntajes client:only="svelte" />
         <InterfazMapa client:only="svelte" />
         <InterfazEstado client:only="svelte"/>
       </div>

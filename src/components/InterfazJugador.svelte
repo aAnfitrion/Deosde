@@ -1,5 +1,11 @@
 <script lang="ts">
-  let jugador = "Epic";
+  import { jugador } from "@lib/manejarPuntuacion";
+  
+  let jugadorActivo = $jugador[0];
+
+  setInterval(() => {
+    $jugador[0] = jugadorActivo;
+  }, 200)
 </script>
 
 <div
@@ -7,6 +13,6 @@
 >
   <div class="flex justify-between">
     <h1 class="text-2xl text-white">Jugador:</h1>
-    <input type="text" bind:value={jugador} class="text-neutral-600 p-1 rounded-lg focus:outline-none">
+    <input type="text" bind:value={jugadorActivo} class="text-neutral-600 p-1 rounded-lg focus:outline-none">
   </div>
 </div>
